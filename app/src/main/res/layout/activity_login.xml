@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userName"
+            type="String" />
+        <variable
+            name="password"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.bleckoviohns.roomappdemo.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.LoginActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/l_guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/l_guidelineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/l_guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <ImageView
+            android:id="@+id/l_imageLogo"
+            android:tint="@color/capptuOrange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/l_guidelineTop"
+            app:layout_constraintEnd_toStartOf="@+id/l_guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/l_guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_capptu_logo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l_InputLayoutUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/l_guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/l_guidelineLeft"
+            app:layout_constraintTop_toTopOf="@+id/l_guidelineTop">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{userName}"
+                android:hint="Usuario" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l_inputLayoutPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toStartOf="@+id/l_guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/l_guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/l_InputLayoutUser">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{password}"
+                android:hint="Password" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/l_button_login"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Login"
+            android:onClick = "@{() -> model.setOnClickBtnLogin(userName,password)}"
+            app:layout_constraintEnd_toStartOf="@+id/l_guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/l_guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/l_inputLayoutPassword" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
