@@ -22,4 +22,8 @@ class ResponseUser {
     @SerializedName("version")
     var versionTerms: Int = 0
     var pass = ""
+    constructor(email:String,password:String){
+        this.email = email
+        this.pass = password
+    }
 }

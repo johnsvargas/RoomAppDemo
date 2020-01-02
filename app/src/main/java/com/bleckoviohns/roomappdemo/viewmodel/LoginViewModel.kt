@@ -1,17 +1,17 @@
 package com.bleckoviohns.roomappdemo.viewmodel
 
-import android.content.Context
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bleckoviohns.roomappdemo.entities.ResponseUser
-import com.bleckoviohns.roomappdemo.entities.User
 import com.bleckoviohns.roomappdemo.models.LoginObservable
 
-class LoginViewModel() : ViewModel(){
+class LoginViewModel : ViewModel(){
     private var loginObservable = LoginObservable()
     private var userObserver =  MutableLiveData<ResponseUser>()
+
+
+    var password: MutableLiveData<String> =  MutableLiveData<String>()
+    var email: MutableLiveData<String> =  MutableLiveData<String>()
 
     fun getResponseLogin() : MutableLiveData<ResponseUser>{
         return loginObservable.getResponseLogin()
@@ -23,11 +23,7 @@ class LoginViewModel() : ViewModel(){
     fun getUser():MutableLiveData<ResponseUser>{
         return userObserver
     }
-    fun setOnClickBtnLogin(email:String?,password: String?){
-        var user = ResponseUser()
-        user.email = email
-        user.pass = password?:""
-        Log.e("Errororororororo","Aqui llego 1")
-        userObserver.value = user
+    fun setOnClickBtnLogin(){
+        userObserver.value = ResponseUser(email.value?:"", password.value?:"")
     }
 }

@@ -11,12 +11,11 @@ import java.util.concurrent.TimeUnit
 
 object HttpCapptuApiAdapter {
     private var API_SERVICE: HttpCapptuApiService? = null
-    var BASE_URL_DJANGO = ""
+    var BASE_URL_DJANGO = "https://www.capptu.co/api/"
 
     val apiService: HttpCapptuApiService
         get() {
 
-            val BaseURL = BASE_URL_DJANGO
             if (API_SERVICE == null) {
 
                 val interceptor  = Interceptor { chain ->
@@ -40,7 +39,7 @@ object HttpCapptuApiAdapter {
                     .build()
 
                 val retrofit = Retrofit.Builder()
-                    .baseUrl(BaseURL)
+                    .baseUrl(BASE_URL_DJANGO)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

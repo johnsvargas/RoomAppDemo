@@ -5,13 +5,6 @@
 
     <data>
         <variable
-            name="userName"
-            type="String" />
-        <variable
-            name="password"
-            type="String" />
-
-        <variable
             name="model"
             type="com.bleckoviohns.roomappdemo.viewmodel.LoginViewModel" />
     </data>
@@ -61,10 +54,10 @@
             app:layout_constraintStart_toStartOf="@+id/l_guidelineLeft"
             app:layout_constraintTop_toTopOf="@+id/l_guidelineTop">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{userName}"
+                android:text="@={model.email}"
                 android:hint="Usuario" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,10 +70,11 @@
             app:layout_constraintStart_toStartOf="@+id/l_guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/l_InputLayoutUser">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{password}"
+                android:text="@={model.password}"
+                android:inputType="textPassword"
                 android:hint="Password" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -92,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="Login"
-            android:onClick = "@{() -> model.setOnClickBtnLogin(userName,password)}"
+            android:onClick = "@{() -> model.setOnClickBtnLogin()}"
             app:layout_constraintEnd_toStartOf="@+id/l_guidelineRight"
             app:layout_constraintStart_toStartOf="@+id/l_guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/l_inputLayoutPassword" />
